@@ -1,0 +1,13 @@
+__pycache__/
+venv_santos/
+
+*.xlsx
+*.xlsx
+
+*.csv
+*.log
+
+*.pyc
+
+db.ini
+reniec.ini
