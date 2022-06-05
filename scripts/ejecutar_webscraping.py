@@ -69,7 +69,10 @@ try:
             campos_texto = reniec.obtener_campos_texto()
             data_pers_dict['observaciones'] = campos_texto[0].get_attribute('value')
             data_pers_dict['glosa_informativa'] = campos_texto[1].get_attribute('value')
-
+            data_pers_dict['foto_persona'] = reniec.obtener_img_alt('foto').get_attribute('src')
+            data_pers_dict['foto_huella_1'] = reniec.obtener_img_alt('huella1').get_attribute('src')
+            data_pers_dict['foto_huella_2'] = reniec.obtener_img_alt('huella2').get_attribute('src')
+            data_pers_dict['foto_firma'] = reniec.obtener_img_alt('firma').get_attribute('src')
             reniec.ir_datos_padres()
             campos = reniec.obtener_campos()
             time.sleep(1)

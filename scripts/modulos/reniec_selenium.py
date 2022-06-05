@@ -54,10 +54,16 @@ class Reniec:
         self.driver.find_element_by_xpath("//input[@value='Nueva Consulta']").click()
     
     def obtener_campos_texto(self) -> list:
-        campos_texto = WebDriverWait(self.driver, ).until(
+        campos_texto = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located((By.TAG_NAME, 'textarea'))
         )
         return campos_texto
+
+    def obtener_img_alt(self, alt: str):
+        in_documento = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, f"//img[@alt='{alt}']"))
+        )
+        return in_documento
 
     def cerrar_web(self):
         if self.driver:

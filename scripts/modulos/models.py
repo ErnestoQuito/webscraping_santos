@@ -3,6 +3,7 @@ from sqlalchemy import Table
 from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import Integer
+from sqlalchemy import Text
 from sqlalchemy import Date
 from sqlalchemy import BigInteger
 
@@ -68,7 +69,12 @@ reniec_personas = Table(
     Column('madre_tip_doc', String(length=250), nullable=True),
     Column('madre_num_doc', String(length=10), nullable=True),
     Column('otro_tele', String(length=250), nullable=True),
-    Column('otro_correo', String(length=250), nullable=True)
+    Column('otro_correo', String(length=250), nullable=True),
+    Column('foto_persona', Text, nullable=True),
+    Column('foto_huella_1', Text, nullable=True),
+    Column('foto_huella_2', Text, nullable=True),
+    Column('foto_firma', Text, nullable=True),
+    
 )
 
 reniec_base = Table(
