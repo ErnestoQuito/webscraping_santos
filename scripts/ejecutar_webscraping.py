@@ -26,9 +26,8 @@ nombre_campos_personales = (
     'dona_organos', 'fecha_inscripcion', 'fecha_emision', 'fecha_caducidad',
     'ficha', 'n_imagen', 'fecha_actualizacion', 'multas_electorales',
     'doc_sustento', 'multa_administrativa', 'num_doc_sustento', 'restriccion',
-    'fecha_restriccion', 'interdiccion', 'discapacidad', 'desconocido1',
-    'desconocido2', 'desconocido3', 'desconocido4', 'desconocido5', 'desconocido6',
-    'desconocido7', 'desconocido8', 'desconocido9', 'desconocido10', 'desconocido11',
+    'fecha_restriccion', 'interdiccion', 'discapacidad', 'observaciones',
+    'glosa_informativa'
 )
 
 nombre_campos_padres = ('padre_pri_apellido', 'padre_seg_apellido', 'padre_nombre', 'padre_tip_doc',
@@ -64,12 +63,17 @@ try:
             campos = reniec.obtener_campos()
             valores = []
             data_pers_dict = {}
-            for i, c in enumerate(campos[1:]):
+            for i, c in enumerate(campos[1:45]):
                 data_pers_dict[nombre_campos_personales[i]] = c.get_attribute('value')
+            # Obtener textareas
+            campos_texto = reniec.obtener_campos_texto()
+            data_pers_dict['observaciones'] = campos_texto[0].get_attribute('value')
+            data_pers_dict['glosa_informativa'] = campos_texto[1].get_attribute('value')
+
             reniec.ir_datos_padres()
             campos = reniec.obtener_campos()
             time.sleep(1)
-            # Raspado web
+            # Raspado web, recorrido de todos los inputs
             valores = []
             data_padre_dict = {}
             for i, c in enumerate(campos[6:18]):

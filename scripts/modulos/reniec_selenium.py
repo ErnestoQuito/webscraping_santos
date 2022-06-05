@@ -52,6 +52,12 @@ class Reniec:
     
     def ir_nueva_consulta(self):
         self.driver.find_element_by_xpath("//input[@value='Nueva Consulta']").click()
+    
+    def obtener_campos_texto(self) -> list:
+        campos_texto = WebDriverWait(self.driver, ).until(
+            EC.presence_of_all_elements_located((By.TAG_NAME, 'textarea'))
+        )
+        return campos_texto
 
     def cerrar_web(self):
         if self.driver:
